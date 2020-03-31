@@ -1,6 +1,5 @@
 node_modules
 package-lock.json
-public/css
 dist
 cypress/fixtures
 cypress/plugins
