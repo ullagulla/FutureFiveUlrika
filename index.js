@@ -13,6 +13,7 @@ const cookieParser = require("cookie-parser")
 const wishlist = require("./router/wishlist")
 const checkout = require("./router/checkout")
 const admin = require('./router/admin')
+
 app.use(cookieParser())
 
 app.use(express.urlencoded({

@@ -10,6 +10,8 @@ const config = require("../config/config")
 const nodemailer = require("nodemailer")
 const sendGridTransport = require("nodemailer-sendgrid-transport")
 
+const stripe = require('stripe')(config.Stripe_Secret_Key);
+
 const SIGNOUT = '/signout'
 const SIGNIN = '/signin'
 const SIGNUP = '/signup'
@@ -234,5 +236,22 @@ router.get(SIGNOUT, (req, res) => {
 router.get('/profile', verifyToken, checkMsg, async (req, res) => {
     res.render("shop/profile")
 })
+
+//payment
+
+router.get('/payment', async (req, res) => {
+    // Create a payment intent to start a purchase flow.
+    let paymentIntent = await stripe.paymentIntents.create({
+        amount: 2000,
+        currency: 'sek',
+        description: 'My first payment'
+    });
+ 
+    // Complete the payment using a test card.
+    paymentIntent = await stripe.paymentIntents.confirm(paymentIntent.id, {
+        payment_method: 'pm_card_visa'
+    });
+    console.log(paymentIntent);
+});
 
 module.exports = router
