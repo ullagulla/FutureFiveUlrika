@@ -12,7 +12,7 @@
         <li class="pl-3 pl-md-5"><a href="/products">Produkter</a></li>
         <% if (user) { %>
         <% if(user.isadmin) { %>
-        <li class="pl-3 pl-md-5"> <a href="/addproducts"> admin: <%= user.name %></a></li>
+        <li class="pl-3 pl-md-5"> <a href="/addproducts"> admin: <%= user.firstName %> <%= user.lastName %></a></li>
         <% } %>
         <% } %>
     </div>
