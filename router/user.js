@@ -10,22 +10,19 @@ const config = require("../config/config")
 const nodemailer = require("nodemailer")
 const sendGridTransport = require("nodemailer-sendgrid-transport")
 
-const SIGNOUT = '/signout'
-const SIGNIN = '/signin'
-const SIGNUP = '/signup'
-
 const transport = nodemailer.createTransport(sendGridTransport({
     auth: {
         api_key: config.mail
     }
 }))
 
-router.get(SIGNIN, verifyToken, checkMsg, (req, res) => {
+router.get("/signin", verifyToken, checkMsg, (req, res) => {
     res.render("shop/signin")
 })
 
-// Sign in 
-router.post(SIGNIN, async (req, res) => {
+//Sign in 
+
+router.post("/signin", async (req, res) => {
 
     const user = await User.findOne({
         email: req.body.email
@@ -37,7 +34,7 @@ router.post(SIGNIN, async (req, res) => {
             httpOnly: true
         })
 
-        return res.redirect(SIGNIN);
+        return res.redirect("/signin");
     }
     const validUser = await bcrypt.compare(req.body.password, user.password)
 
@@ -47,7 +44,7 @@ router.post(SIGNIN, async (req, res) => {
             httpOnly: true
         })
 
-        return res.redirect(SIGNIN);
+        return res.redirect("/signin");
     }
     jwt.sign({
         user
@@ -67,16 +64,16 @@ router.post(SIGNIN, async (req, res) => {
     })
 })
 
-//Skapa användare
+//Create user
 
 const salt = bcrypt.genSaltSync(10)
 
-router.get(SIGNUP, verifyToken, checkMsg, async (req, res) => {
+router.get("/signup", verifyToken, checkMsg, async (req, res) => {
 
     res.render("shop/signup")
 })
 
-router.post(SIGNUP, async (req, res) => {
+router.post("/signup", async (req, res) => {
 
     if (req.body.firstname.length < 2) {
         res.cookie('message', 'Ogiltigt namn', {
@@ -84,7 +81,7 @@ router.post(SIGNUP, async (req, res) => {
             httpOnly: true
         })
 
-        return res.redirect(SIGNUP)
+        return res.redirect("/signup")
     }
 
     if (req.body.password.length < 6) {
@@ -92,7 +89,7 @@ router.post(SIGNUP, async (req, res) => {
             maxAge: 3600000,
             httpOnly: true
         })
-        return res.redirect(SIGNUP)
+        return res.redirect("/signup")
     }
 
     User.findOne({
@@ -104,7 +101,7 @@ router.post(SIGNUP, async (req, res) => {
                 httpOnly: true
             })
 
-            return res.redirect(SIGNUP)
+            return res.redirect("/signup")
         } else {
             const cryptPassword = await bcrypt.hash(req.body.password, salt)
             user = await new User({
@@ -136,9 +133,11 @@ router.post(SIGNUP, async (req, res) => {
     })
 })
 
-//reset password
+//Reset password
 
 router.get("/reset", function (req, res) {
+
+    //To trigger modal
 
 })
 
@@ -158,7 +157,7 @@ router.post("/reset", async (req, res) => {
 
         transport.sendMail({
             to: user.email,
-            from: "info@mystiskasaker.se",
+            from: "<no-reply>info@mystiskasaker.se",
             subject: "Återställ ditt lösenord",
             html: `<h1> Återställningslänk: <a href="http://localhost:8000/reset/${resetToken}">Här</a></h1><br>
                     <h2>Kontakta kundtjänst om du inte har efterfrågat det här mejlet</h2>`
@@ -215,15 +214,17 @@ router.post("/reset/:token", async (req, res) => {
     res.redirect("/signin");
 })
 
-//Logga ut
+//Logout
 
-router.get(SIGNOUT, (req, res) => {
-    res.clearCookie("jsonwebtoken").redirect(SIGNIN)
+router.get("/signout", (req, res) => {
+    res.clearCookie("jsonwebtoken").redirect("/signin")
 })
 
-router.get('/profile', verifyToken, checkMsg, async (req, res) => {
+router.get("/profile", verifyToken, checkMsg, async (req, res) => {
     res.render("shop/profile")
 })
+
+//Update user information
 
 router.post("/updateUserInfo/:id", verifyToken, async (req, res) => {
 
