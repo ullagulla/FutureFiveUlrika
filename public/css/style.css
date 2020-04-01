@@ -456,6 +456,9 @@ h1 {
 .checkout-wrapper form .col-12 .form-row .form-control::placeholder {
   font-size: 10px; }
 
+.checkout-wrapper form .col-12 .form-row .form-control {
+  font-size: 12px; }
+
 .checkout-wrapper form .col-12 .form-row #inputEmail {
   border-bottom: none;
   border-bottom-right-radius: 0;
@@ -465,7 +468,7 @@ h1 {
       border-top-right-radius: 0;
       border-right: 0; } }
 
-.checkout-wrapper form .col-12 .form-row #inputZip {
+.checkout-wrapper form .col-12 .form-row #inputPhone {
   border-bottom: none;
   border-right: none;
   border-top-right-radius: 0;
@@ -473,7 +476,7 @@ h1 {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
   @media (min-width: 768px) {
-    .checkout-wrapper form .col-12 .form-row #inputZip {
+    .checkout-wrapper form .col-12 .form-row #inputPhone {
       border-top-right-radius: 0.25rem; } }
 
 .checkout-wrapper form .col-12 .form-row #inputPersonal {
@@ -527,12 +530,43 @@ h1 {
       border-bottom: 1px solid #ced4da;
       border-bottom-left-radius: 0.25rem; } }
 
-.checkout-wrapper form .col-12 .form-row #inputPhone {
+.checkout-wrapper form .col-12 .form-row #inputZip {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
   @media (min-width: 768px) {
-    .checkout-wrapper form .col-12 .form-row #inputPhone {
+    .checkout-wrapper form .col-12 .form-row #inputZip {
       border-bottom-left-radius: 0; } }
+
+.checkout-wrapper form .col-12 .payment-container .card-img {
+  width: 100px; }
+  .checkout-wrapper form .col-12 .payment-container .card-img img {
+    width: 100%; }
+
+.checkout-wrapper form .col-12 .payment-container .payment-wrapper {
+  margin-left: 15px;
+  margin-right: 15px; }
+  .checkout-wrapper form .col-12 .payment-container .payment-wrapper .form-control::placeholder {
+    font-size: 10px; }
+  .checkout-wrapper form .col-12 .payment-container .payment-wrapper #inputCreditcard {
+    font-size: 14px;
+    background-color: #EAEAEA;
+    border: 2px solid #ced4da;
+    border-radius: 0.25rem; }
+  .checkout-wrapper form .col-12 .payment-container .payment-wrapper #inputCardnumber {
+    border-bottom: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
+  .checkout-wrapper form .col-12 .payment-container .payment-wrapper #inputMonth {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  .checkout-wrapper form .col-12 .payment-container .payment-wrapper #inputCVC {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0; }
+  .checkout-wrapper form .col-12 .payment-container .payment-wrapper label {
+    font-size: 12px; }
 
 .checkout-wrapper form .btn-wrapper a {
   text-decoration: none; }
@@ -545,65 +579,6 @@ h1 {
   .checkout-wrapper form .btn-wrapper .btn:hover {
     background-color: #e7be50 !important;
     color: black; }
-
-.checkout-wrapper .payment-container .card-img {
-  width: 100px; }
-  .checkout-wrapper .payment-container .card-img img {
-    width: 100%; }
-
-.checkout-wrapper .payment-container .payment-wrapper {
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  margin-left: 15px;
-  margin-right: 15px; }
-  .checkout-wrapper .payment-container .payment-wrapper .form-control::placeholder {
-    font-size: 10px; }
-  .checkout-wrapper .payment-container .payment-wrapper #inputCreditcard {
-    background-color: #EAEAEA;
-    border: 2px solid #ced4da;
-    border-radius: 0.25rem;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0; }
-  .checkout-wrapper .payment-container .payment-wrapper #inputAccount {
-    background-color: transparent;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    border-top: none;
-    border-bottom: none;
-    border-right: none;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0; }
-  .checkout-wrapper .payment-container .payment-wrapper #inputBankTransfer {
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0; }
-  .checkout-wrapper .payment-container .payment-wrapper #inputCardnumber {
-    border-bottom: none;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0; }
-  .checkout-wrapper .payment-container .payment-wrapper #inputMonth {
-    border-right: none;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0; }
-  .checkout-wrapper .payment-container .payment-wrapper #inputCVC {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0; }
-  .checkout-wrapper .payment-container .payment-wrapper label {
-    font-size: 12px; }
-  .checkout-wrapper .payment-container .payment-wrapper .klarna-info {
-    width: 100%;
-    background-color: #EAEAEA; }
-  .checkout-wrapper .payment-container .payment-wrapper .show-klarna {
-    width: 100%;
-    cursor: pointer; }
-    .checkout-wrapper .payment-container .payment-wrapper .show-klarna img {
-      width: 25px;
-      height: 15px; }
 
 body {
   margin: 0px;

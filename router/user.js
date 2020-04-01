@@ -10,8 +10,6 @@ const config = require("../config/config")
 const nodemailer = require("nodemailer")
 const sendGridTransport = require("nodemailer-sendgrid-transport")
 
-const stripe = require('stripe')(config.Stripe_Secret_Key);
-
 const SIGNOUT = '/signout'
 const SIGNIN = '/signin'
 const SIGNUP = '/signup'
@@ -80,7 +78,7 @@ router.get(SIGNUP, verifyToken, checkMsg, async (req, res) => {
 
 router.post(SIGNUP, async (req, res) => {
 
-    if (req.body.name.length < 2) {
+    if (req.body.firstname.length < 2) {
         res.cookie('message', 'Ogiltigt namn', {
             maxAge: 3600000,
             httpOnly: true
@@ -97,15 +95,6 @@ router.post(SIGNUP, async (req, res) => {
         return res.redirect(SIGNUP)
     }
 
-    if (req.body.zipcode.length < 5 || req.body.zipcode.length > 6) {
-        res.cookie('message', 'Ogiltigt postnummer', {
-            maxAge: 3600000,
-            httpOnly: true
-        })
-
-        return res.redirect(SIGNUP)
-    }
-
     User.findOne({
         email: req.body.email
     }).then(async user => {
@@ -119,11 +108,10 @@ router.post(SIGNUP, async (req, res) => {
         } else {
             const cryptPassword = await bcrypt.hash(req.body.password, salt)
             user = await new User({
-                name: req.body.name,
+                firstName: req.body.firstname,
+                lastName: req.body.lastname,
                 email: req.body.email,
-                password: cryptPassword,
-                zipcode: req.body.zipcode,
-                address: req.body.address
+                password: cryptPassword
             }).save()
 
             jwt.sign({
@@ -237,21 +225,21 @@ router.get('/profile', verifyToken, checkMsg, async (req, res) => {
     res.render("shop/profile")
 })
 
-//payment
+router.post("/updateUserInfo/:id", verifyToken, async (req, res) => {
 
-router.get('/payment', async (req, res) => {
-    // Create a payment intent to start a purchase flow.
-    let paymentIntent = await stripe.paymentIntents.create({
-        amount: 2000,
-        currency: 'sek',
-        description: 'My first payment'
-    });
- 
-    // Complete the payment using a test card.
-    paymentIntent = await stripe.paymentIntents.confirm(paymentIntent.id, {
-        payment_method: 'pm_card_visa'
-    });
-    console.log(paymentIntent);
-});
+    await User.updateOne({ _id: req.params.id }, 
+        {
+            $set: {
+                firstName: req.body.firstname,
+                lastName: req.body.lastname,
+                phone: req.body.phone,
+                address: req.body.address,
+                zipcode: req.body.zipcode,
+                city: req.body.city
+            }
+        })
+
+        res.redirect("/profile")
+})
 
 module.exports = router

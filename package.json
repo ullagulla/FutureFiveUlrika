@@ -4,7 +4,7 @@
   "description": "webshop med mystiska saker",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "sass": "node-sass --watch public/scss -o public/css",
     "dev": "npm-run-all --parallel start sass",
     "test": "npm-run-all --parallel unittest cy:run",

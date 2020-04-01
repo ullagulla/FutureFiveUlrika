@@ -11,8 +11,12 @@ router.get("/wishlist", verifyToken, async (req, res) => {
 router.get("/wishlist/:id", verifyToken, async (req, res) => {
 
     if (!req.body.user) {
-        req.flash("error_msg", "Du måste logga in för att lägga till i wishlist")
+        res.cookie('message', 'Du måste vara inloggad', {
+            maxAge: 3600000,
+            httpOnly: true
+        })
         return res.redirect("/productpage/" + req.params.id)
+
     }
 
     const product = await Product.findOne({

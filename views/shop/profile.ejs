@@ -3,19 +3,46 @@
 <%- include("../includes/navbar.ejs") %>
 
 
-<div class="container">
+<div class="container pb-5">
     <%- include("../includes/messages.ejs") %>
     <div class="row">
         <div class="col-12 py-5">
-            <h5>Välkommen <%= user.name %>, om du klickar <a class="prod-link" href="/products">här</a> kan du börja
+            <h5>Välkommen <%= user.firstName %>, om du klickar <a class="prod-link" href="/products">här</a> kan du börja
                 shoppa</h5>
         </div>
         <div class="col-6 pt-5 flex-column">
             <h5>Mina uppgifter</h5>
-            <p class="details w-50 mb-1"><%= user.name %></p>
-            <p class="details w-50 mb-1"><%= user.email %></p>
-            <p class="details w-50"><%= user.address %></p>
+
+            <form action="/updateUserInfo/<%= user._id %> " method="post">
+                <div class="form-group d-flex">
+                    <input class="form-control w-50 mr-1" name="firstname" type="text" placeholder="Förnamn"
+                        value="<%= user.firstName %>" required>
+                    <input class="form-control w-50 ml-1" name="lastname" type="text" placeholder="Efternamn"
+                        value="<%= user.lastName %>" required>
+                </div>
+                <div class="form-group d-flex">
+                    <input class="form-control" type="email" value="<%= user.email %>" readonly>
+                </div>
+                <div class="form-group d-flex">
+                    <input class="form-control w-50 mr-1" name="prefix" type="text" placeholder="" value="+46">
+                    <input class="form-control" name="phone" type="number" placeholder="Telefonnummer" value="<%= user.phone %>"
+                        required>
+                </div>
+                <div class="form-group d-flex">
+                    <input class="form-control" name="address" type="text" placeholder="Gatuadress" value="<%= user.address %>"
+                        required>
+                </div>
+                <div class="form-group d-flex">
+                    <input class="form-control w-50 mr-1" name="zipcode" type="text" placeholder="Postnummer"
+                        value="<%= user.zipcode %>" required>
+                    <input class="form-control w-50 ml-1" name="city" type="text" placeholder="Ort" value="<%= user.city %>"
+                        required>
+                </div>
+                <button class="btn" type="submit">Spara</button>
+            </form>
 
         </div>
     </div>
 </div>
+
+<%- include("../includes/footer.ejs") %>

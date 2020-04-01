@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
-    /*  ownerUserId: String,
-     locationId: String, */
     orderDate: {
         type: String,
         required: true
     },
-    quantity: {
+    orderNumber: {
         type: Number,
         required: true
     },

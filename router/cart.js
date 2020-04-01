@@ -14,7 +14,7 @@ router.get("/cart", verifyToken, async (req, res) => {
             maxAge: 3600000,
             httpOnly: true
         })
-        return res.redirect("/products")
+        return res.redirect("/signin")
     }
 
     user = await User.findOne({
@@ -45,7 +45,7 @@ router.get("/cartAdd/:id", verifyToken, async (req, res) => {
             maxAge: 3600000,
             httpOnly: true
         })
-        return res.redirect("/products")
+        return res.redirect("/signin")
 
     }
 

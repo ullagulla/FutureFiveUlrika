@@ -33,7 +33,7 @@
                 <% total += products[i].price * products[i].quantity %>
                 <% } %>
                 <h5 class="checkout-total ml-2 d-inline">Total</h5>
-                <span class="mr-2"><%= total %> SEK</span>
+                <span class="mr-2"><input name="total" value="<%= total %>" hidden> <%= total %> SEK</span>
             </div>
             <h5 class="information pt-4 pl-2 mb-1">Din information</h5>
             <p class="address-info pl-2">Adressen måste vara inom EU</p>
@@ -41,37 +41,83 @@
                 <div class="col-12">
                     <div class="form-row">
                         <div class="form-group col-md-6 m-0 p-0">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email-adress">
+                            <input type="email" class="form-control" name="email" id="inputEmail"
+                                placeholder="Email-adress" value="<%= user.email %>" readonly>
                         </div>
                         <div class="form-group col-md-6 m-0 p-0">
-                            <input type="text" class="form-control" id="inputZip" placeholder="Postnummer">
+                            <input type="text" class="form-control" name="phone" id="inputPhone"
+                                placeholder="Telefonnummer" value="<%= user.phone %>">
+                        </div>
+                        <div class="form-group col-md-6 m-0 p-0">
+                            <input type="text" class="form-control" name="firstname" id="inputFirstname"
+                                placeholder="Förnamn" value="<%= user.firstName %>">
+                        </div>
+                        <div class="form-group col-md-6 m-0 p-0">
+                            <input type="text" class="form-control" name="lastname" id="inputLastname"
+                                placeholder="Efternamn" value="<%= user.lastName %>">
                         </div>
                         <div class="form-group col-12 m-0 p-0">
-                            <input type="text" class="form-control" id="inputPersonal"
-                                placeholder="Personnummer (frivilligt)">
+                            <input type="text" class="form-control" name="address" id="inputAddress"
+                                placeholder="Adress" value="<%= user.address %>">
                         </div>
                         <div class="form-group col-md-6 m-0 p-0">
-                            <input type="text" class="form-control" id="inputFirstname" placeholder="Förnamn">
+                            <input type="text" class="form-control" name="city" id="inputCity" placeholder="Stad"
+                                value="<%= user.city %>">
                         </div>
                         <div class="form-group col-md-6 m-0 p-0">
-                            <input type="text" class="form-control" id="inputLastname" placeholder="Efternamn">
+                            <input type="text" class="form-control" name="zipcode" id="inputZip"
+                                placeholder="Postnummer" value="<%= user.zipcode %>">
                         </div>
-                        <div class="form-group col-12 m-0 p-0">
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Adress">
-                        </div>
-                        <div class="form-group col-md-6 m-0 p-0">
-                            <input type="text" class="form-control" id="inputCity" placeholder="Stad">
-                        </div>
-                        <div class="form-group col-md-6 m-0 p-0">
-                            <input type="text" class="form-control" id="inputPhone" placeholder="Telefonnummer">
+                    </div>
+                    <div class="row payment-container justify-content-center">
+                        <div class="col-11 payment-wrapper mt-5">
+                            <div class="pay-method pb-3">
+                                <p class="font-weight-bold mb-3 pt-2">Payment method</p>
+                                <div class="account-info d-flex justify-content-between">
+                                    <div id="card-info">
+                                        <input type="radio" name="gender" value="male"><span
+                                            class="pay-offer pl-2">Credit Card or Bank account</span>
+                                    </div>
+                                    <div class="card-img">
+                                        <img src="../../img/betalningsmetoder.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-row card-details">
+                                    <div class="form-group col-12 m-0 p-0">
+                                        <button type="button" alt="CreditCard" class="btn w-100 text-left"
+                                            id="inputCreditcard">Credit Card</button>
+                                    </div>
+                                    <div class="form-group col-12 m-0 py-2">
+                                    </div>
+                                    <div class="form-group col-12 m-0 p-0">
+                                        <input type="text" class="form-control" name="cardnumber" id="inputCardnumber"
+                                            placeholder="Cardnumber">
+                                    </div>
+                                    <div class="form-group col-6 m-0 p-0">
+                                        <input type="text" class="form-control" name="monthyear" id="inputMonth"
+                                            placeholder="MM / YY">
+                                    </div>
+                                    <div class="form-group col-6 m-0 p-0">
+                                        <input type="text" class="form-control" name="cvc" id="inputCVC"
+                                            placeholder="CVC">
+                                    </div>
+                                    <div class="custom-control custom-checkbox py-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck"
+                                            name="card-details">
+                                        <label class="custom-control-label pt-1" for="customCheck">Save my card
+                                            details</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="btn-wrapper py-3 d-flex justify-content-end">
                     <div class="col-6 d-flex justify-content-between pl-0">
                         <button type="button" class="btn mr-1 w-50">Avbryt</button>
-                        <a href="/thankyou"><button type="submit" class="btn continue btn-dark w-100 ml-1">Lägg din
-                                order</button></a>
+                        <button type="submit" class="btn continue btn-dark w-100 ml-1">Lägg din order</button>
                     </div>
                 </div>
             </form>
