@@ -46,6 +46,7 @@ router.post("/edit/:id", verifyToken, async (req, res) => {
             name: req.body.productName,
             price: req.body.productPrice,
             description: req.body.productDescription,
+            imageUrl: "/img/" + req.body.imageUrl,
             adminId: req.body.user,
             adminName: req.body.user.name
         }
