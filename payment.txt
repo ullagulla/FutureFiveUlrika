@@ -1,0 +1,17 @@
+//tredjeparts betalning, stripe api, klarna, paypal (vanliga)
+
+//vi behöver en api nyckel från stripe
+
+order router -> renderar vi checkout.ejs -> 
+stripe hemsida (där användare ska mata information) -> nästa router (succé eller avbryt) -> thank you router
+
+i ejs-filen kommer vi skriva logiken och länka in stripe script:
+
+<script src="https://js.stripe.com/v3/"></script>
+
+var stripe = Stripe("pk_test_FPS2Na5LzZxYFLdI7aAuwWt100ehbVLP3F")
+document.querySelector("btn").addEventListener("click", () => {
+    stripe.redirectCheckout({
+        sessionId: "egna sessionId från vår app"
+    })
+})

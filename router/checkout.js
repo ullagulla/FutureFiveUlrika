@@ -25,36 +25,50 @@ router.get("/checkout", verifyToken, async (req, res) => {
 
     }
 
-    res.render("shop/checkout.ejs", {
-        products
+    return stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: products.map((product)=>{
+            return {
+                name: product.name,
+                amount: product.price*100,
+                quantity: product.quantity,
+                currency: "SEK"
+            }
+        }),
+        success_url: req.protocol + '://' + req.get('Host') + '/thankyou', //SKRIV HEROKU URL!!!
+        cancel_url: "http://localhost:8000/felsida"
+
+    }).then((session) => {
+        res.render("shop/checkout.ejs", {user, products, sessionId:session.id, Stripe_Public_Key: config.Stripe_Public_Key})
     })
 })
 
-// router.post("/checkout", verifyToken, async (req,res) => {
+router.get('/thankyou', verifyToken, async (req, res) => {
 
-//     const userOrder = await Order.findOne({
-//         _id: req.body.order._id
-//     })
-    
-//     res.render("shop/thankyou", {
-//         userOrder
-//     })
+    let products = [];
 
-// })
+    let user = await User.findOne({
+        _id: req.body.user._id
+    });
 
-// router.post('/checkout', async (req, res) => {
-//     // Create a payment intent to start a purchase flow.
-//     let paymentIntent = await stripe.paymentIntents.create({
-//         amount: req.body.total,
-//         currency: 'sek',
-//         description: 'My first payment'
-//     });
+    for (let i = 0; i < user.cart.length; i++) {
+
+        let product = await Product.findOne({
+            _id: user.cart[i].productId
+        });
+
+        product.quantity = user.cart[i].quantity
+        products.push(product);
+
+        await user.createOrder(product, product.quantity)
+    }
  
-//     // Complete the payment using a test card.
-//     paymentIntent = await stripe.paymentIntents.confirm(paymentIntent.id, {
-//         payment_method: 'pm_card_visa'
-//     });
-//     console.log(paymentIntent);
-// });
+    user.cart = [];
+ 
+    user.save();
+
+    res.render("shop/thankyou", {products, user})
+ 
+});
 
 module.exports = router

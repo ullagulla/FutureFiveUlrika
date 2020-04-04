@@ -64,6 +64,25 @@ const UserSchema = mongoose.Schema({
             type: Number,
             require: true
         }
+    }],
+    order: [{
+        productId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product"
+        },
+        quantity: {
+            type: Number,
+            require: true
+        },
+        orderDate: {
+            type: Date,
+            default: Date.now,
+            require: true
+        },
+        orderNumber: {
+            type: Number,
+            require: true
+        }
     }]
 });
 
@@ -76,6 +95,15 @@ UserSchema.methods.addToWishList = function (productId) {
         name: productId.name,
         imageUrl: productId.imageUrl
     })
+
+    return this.save()
+}
+
+UserSchema.methods.removeFromWishlist = function (productId) {
+
+    const filterItems = this.wishlist.filter(product => product.productId.toString() !== productId.toString())
+
+    this.wishlist = filterItems
 
     return this.save()
 }
@@ -99,6 +127,7 @@ UserSchema.methods.removeFromCart = function (productId) {
     this.cart = filterItems
 
     return this.save()
+
 }
 
 UserSchema.methods.addProductInCart = function (productId) {
@@ -123,6 +152,17 @@ UserSchema.methods.removeProductInCart = function (productId) {
 
     return this.save()
 
+}
+
+UserSchema.methods.createOrder = function (productId, quantity) {
+
+    this.order.find(product => product.productId == productId)
+    this.order.push({
+        productId: productId._id,
+        quantity: quantity
+    })
+
+return this.save()
 }
 
 const User = mongoose.model("User", UserSchema)

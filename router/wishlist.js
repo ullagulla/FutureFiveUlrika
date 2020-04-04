@@ -22,7 +22,7 @@ router.get("/wishlist/:id", verifyToken, async (req, res) => {
     const product = await Product.findOne({
         _id: req.params.id
     })
-    // console.log("Information från user body " + req.body.user._id)
+    
     const user = await User.findOne({
         _id: req.body.user._id
     })
@@ -32,5 +32,18 @@ router.get("/wishlist/:id", verifyToken, async (req, res) => {
     res.redirect("/productpage/" + req.params.id)
 
 })
+
+router.get("/remove/:id", verifyToken, async (req, res) => {
+
+    const user = await User.findOne({
+        _id: req.body.user._id
+    })
+
+    await user.removeFromWishlist(req.params.id);
+
+    res.redirect("/products")
+
+})
+
 
 module.exports = router

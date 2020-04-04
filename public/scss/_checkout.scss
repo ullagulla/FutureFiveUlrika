@@ -218,22 +218,21 @@
                 }
             }
         }
+    }
+    .btn-wrapper {
+        a {
+            text-decoration: none;
+        }
 
-        .btn-wrapper {
-            a {
-                text-decoration: none;
-            }
+        .btn {
+            background-color: transparent !important;
+            border-radius: 0;
+            border: 1px solid $primColor;
+            color: $primColor;
 
-            .btn {
-                background-color: transparent !important;
-                border-radius: 0;
-                border: 1px solid $primColor;
-                color: $primColor;
-
-                &:hover {
-                    background-color: $primColor !important;
-                    color: black;
-                }
+            &:hover {
+                background-color: $primColor !important;
+                color: black;
             }
         }
     }

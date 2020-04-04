@@ -4,12 +4,11 @@ const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
     orderDate: {
-        type: String,
-        required: true
+        type: Date,
+        default: Date.now,
     },
     orderNumber: {
         type: Number,
-        required: true
     },
     user: [{
         productId: {
@@ -17,16 +16,12 @@ const OrderSchema = new Schema({
             ref: 'User'
         }
     }],
-    cart: [{
+    orderItems: [{
         productId: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Product'
+            ref: "Product"
         },
         quantity: {
-            type: Number,
-            require: true
-        },
-        price: {
             type: Number,
             require: true
         }

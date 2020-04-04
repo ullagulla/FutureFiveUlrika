@@ -3,19 +3,31 @@
 <%- include("../includes/navbar.ejs") %>
 
 <body>
-
-    <div id=content-container>
-        <div id="content-two-thank">
-            <% let max = Math.floor(Math.random() * 100000000) %>
-            <h3 id="glow">
-                Tack för att du klev in i mörkret hos oss. <br>Ditt ordernummer är <span
-                    class="random-num"><%= max %></span>
-                <br><br>Vi tar hand om dina artefakter under månens spröda sken och kommer snart att frambringa dem hos
-                er.
-            </h3>
-            <img id="thirdeye" src="/img/thirdeyee.jfif" alt="">
-        </div>
-        <div class="content-four-thank">
+    <% let randomOrderNumber = Math.floor(Math.random() * 10000) %>
+    <div class="container thankyou-container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-7 text-center">
+                <h4 class="mt-5">Tack för att du klev in i mörkret hos oss, <%= user.firstName %>!</h4> 
+                <div class="mt-3">Vi har bekräftat din order enligt nedan. Ditt ordernummer är <span
+                    class="random-num"><%= randomOrderNumber %>.</span></div>
+                    <div class="mt-3">Vi tar hand om dina artefakter under månens spröda sken och kommer snart att frambringa dem hos
+                er.</div>
+                <div class="d-flex justify-content-center mt-4">
+                <% products.forEach( (product) => { %>
+                    <div class="product-wrapper col-6">
+                        <div class="product-img-wrapper">
+                            <a href="/productpage/<%= product._id %>" class="specificProduct"><img
+                                    src="<%= product.imageUrl %> " alt="<%= product.name %>" /></a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name mt-auto"> <%= product.name %>
+                            </div>
+                            <div class="product-price mt-auto"> <%= product.quantity %> st </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
         </div>
     </div>
 </body>
