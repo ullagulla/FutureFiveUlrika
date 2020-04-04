@@ -6,7 +6,7 @@ const verifyToken = require("./verify")
 const Product = require("../models/product")
 const Order = require("../models/order")
 
-const stripe = require('stripe')("pk_test_FPS2Na5LzZxYFLdI7aAuwWt100ehbVLP3F");
+const stripe = require('stripe')("sk_test_mrDJ8jrhqKfcZfShiXxBe7Wk00qE6spmUe");
 
 router.get("/checkout", verifyToken, async (req, res) => {
 
