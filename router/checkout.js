@@ -39,7 +39,7 @@ router.get("/checkout", verifyToken, async (req, res) => {
         cancel_url: "http://localhost:8000/felsida"
 
     }).then((session) => {
-        res.render("shop/checkout.ejs", {user, products, sessionId:session.id})
+        res.render("shop/checkout.ejs", {user, products, sessionId:session.id, Stripe_Public_Key: pk_test_FPS2Na5LzZxYFLdI7aAuwWt100ehbVLP3F})
     })
 })
 
