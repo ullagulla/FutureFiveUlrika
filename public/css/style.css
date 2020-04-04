@@ -29,7 +29,10 @@
   transition: all 0.5s ease-in-out;
   padding: 16px 0; }
   #main-navbar .nav-icons-wrapper {
-    width: 300px; }
+    width: 200px; }
+    @media (min-width: 600px) {
+      #main-navbar .nav-icons-wrapper {
+        width: 300px; } }
     #main-navbar .nav-icons-wrapper li button {
       cursor: pointer;
       background-color: transparent;
@@ -114,7 +117,11 @@
       background-color: transparent !important;
       border-radius: 0;
       border: 1px solid #e7be50;
-      color: #e7be50; }
+      color: #e7be50;
+      font-size: 12px; }
+      @media (min-width: 600px) {
+        .modal-content .modal-footer button {
+          font-size: 16px; } }
       .modal-content .modal-footer button:hover {
         background-color: #e7be50 !important;
         color: black; }
@@ -127,12 +134,18 @@ body .container {
     body .container .products-container .product-wrapper .product-img-wrapper {
       margin-left: auto;
       margin-right: auto;
-      max-height: 200px;
-      width: 200px;
+      max-height: 150px;
+      width: 150px;
       overflow: hidden; }
+      @media (min-width: 600px) {
+        body .container .products-container .product-wrapper .product-img-wrapper {
+          width: 200px; } }
+      @media (min-width: 990px) {
+        body .container .products-container .product-wrapper .product-img-wrapper {
+          max-height: 200px; } }
       body .container .products-container .product-wrapper .product-img-wrapper img {
         height: auto;
-        width: 200px; }
+        width: 150px; }
         body .container .products-container .product-wrapper .product-img-wrapper img:hover {
           cursor: pointer;
           animation: flash 0.2s;
@@ -339,6 +352,8 @@ h1 {
     @media (min-width: 600px) {
       .cart-wrapper .cart-product-wrapper .cart-product-info {
         font-size: 14px; } }
+    .cart-wrapper .cart-product-wrapper .cart-product-info .cart-product-name {
+      word-wrap: break-word; }
   .cart-wrapper .cart-product-wrapper .cart-product-img-wrapper {
     max-height: 200px;
     overflow: hidden; }
@@ -583,29 +598,29 @@ h1 {
     color: black; }
 
 body .thankyou-container {
-  height: 500px; }
-  body .thankyou-container .row .col-7 .product-wrapper {
+  height: auto; }
+  body .thankyou-container .row .col-md-7 .product-wrapper {
     position: relative;
     height: 260px; }
-    body .thankyou-container .row .col-7 .product-wrapper .product-img-wrapper {
+    body .thankyou-container .row .col-md-7 .product-wrapper .product-img-wrapper {
       margin-left: auto;
       margin-right: auto;
       max-height: 200px;
       width: 200px;
       overflow: hidden; }
-      body .thankyou-container .row .col-7 .product-wrapper .product-img-wrapper img {
+      body .thankyou-container .row .col-md-7 .product-wrapper .product-img-wrapper img {
         height: auto;
         width: 200px; }
-    body .thankyou-container .row .col-7 .product-wrapper .product-info {
+    body .thankyou-container .row .col-md-7 .product-wrapper .product-info {
       text-transform: uppercase;
       text-align: center; }
-      body .thankyou-container .row .col-7 .product-wrapper .product-info .product-name {
+      body .thankyou-container .row .col-md-7 .product-wrapper .product-info .product-name {
         position: relative; }
-        body .thankyou-container .row .col-7 .product-wrapper .product-info .product-name a {
+        body .thankyou-container .row .col-md-7 .product-wrapper .product-info .product-name a {
           color: #e7be50;
           position: absolute;
           right: 25px; }
-          body .thankyou-container .row .col-7 .product-wrapper .product-info .product-name a:hover {
+          body .thankyou-container .row .col-md-7 .product-wrapper .product-info .product-name a:hover {
             filter: brightness(0.4); }
 
 @keyframes move-background {
@@ -867,15 +882,21 @@ a {
     border-style: solid;
     padding: 0 10px; }
   #signin-form #reset-btn {
-    font-size: 16px;
     cursor: pointer;
     background-color: transparent;
-    border: none; }
+    border: none;
+    font-size: 12px; }
+    @media (min-width: 600px) {
+      #signin-form #reset-btn {
+        font-size: 16px; } }
     #signin-form #reset-btn:hover {
       opacity: 0.6; }
   #signin-form .no-registration {
-    font-size: 16px;
-    color: black; }
+    color: black;
+    font-size: 12px; }
+    @media (min-width: 600px) {
+      #signin-form .no-registration {
+        font-size: 16px; } }
     #signin-form .no-registration:hover {
       opacity: 0.6; }
   #signin-form .btn {
@@ -1174,7 +1195,7 @@ body {
         body #content-container #content-two #tarot-text-container #tarot-text {
           opacity: 0;
           transition: all 1s ease-in-out;
-          font-size: 1rem;
+          font-size: 0.9rem;
           margin: 0.5rem; }
           @media (min-width: 400px) {
             body #content-container #content-two #tarot-text-container #tarot-text {
@@ -1206,7 +1227,7 @@ body {
         position: absolute;
         bottom: 0;
         left: 2%;
-        font-size: 8rem; }
+        font-size: 6rem; }
         @media (min-width: 600px) {
           body #content-container #content-three h2 {
             font-size: 11rem; } }
@@ -1240,7 +1261,8 @@ body {
       body #content-container #content-four div {
         width: 50%;
         text-align: center;
-        color: #e0d2b5; }
+        color: #e0d2b5;
+        overflow: hidden; }
         body #content-container #content-four div h2 {
           font-size: 1rem;
           margin: 1rem; }
@@ -1253,7 +1275,8 @@ body {
         body #content-container #content-four div p {
           margin: 0;
           padding: 0 1rem;
-          font-size: 0.8rem; }
+          font-size: 0.8rem;
+          overflow: hidden; }
           @media (min-width: 1200px) {
             body #content-container #content-four div p {
               font-size: 1.1rem; } }

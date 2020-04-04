@@ -36,6 +36,9 @@ $primColor: #e7be50;
             @include tablet() {
                 font-size: 14px;
             }
+            .cart-product-name {
+                word-wrap: break-word;
+            }
         }
 
         .cart-product-img-wrapper {

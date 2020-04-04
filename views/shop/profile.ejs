@@ -10,7 +10,7 @@
             <h5>Välkommen <%= user.firstName %>, om du klickar <a class="prod-link" href="/products">här</a> kan du börja
                 shoppa</h5>
         </div>
-        <div class="col-6 pt-5 flex-column">
+        <div class="col-12 col-md-6 pt-5 flex-column">
             <h5>Mina uppgifter</h5>
 
             <form action="/updateUserInfo/<%= user._id %> " method="post">

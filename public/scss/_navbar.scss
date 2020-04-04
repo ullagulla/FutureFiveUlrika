@@ -50,7 +50,11 @@ $colorThree: #e0d2b5;
     padding: 16px 0;
 
     .nav-icons-wrapper {
-        width: 300px;
+        width: 200px;
+        @include tablet(){
+
+            width: 300px;
+        }
 
         li {
             button {
@@ -189,6 +193,10 @@ $colorThree: #e0d2b5;
             border-radius: 0;
             border: 1px solid $colorTwo;
             color: $colorTwo;
+            font-size: 12px;
+            @include tablet(){
+                font-size: 16px;
+            }
 
             &:hover {
                 background-color: $colorTwo !important;

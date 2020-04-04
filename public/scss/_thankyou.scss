@@ -24,9 +24,9 @@ $colorThree: #e0d2b5;
 
 body {
     .thankyou-container {
-        height: 500px;
+        height: auto;
         .row {
-            .col-7 {
+            .col-md-7 {
                 .product-wrapper {
                     position: relative;
                     height: 260px;
