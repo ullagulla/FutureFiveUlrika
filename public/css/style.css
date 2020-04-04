@@ -137,15 +137,19 @@ body .container {
       max-height: 150px;
       width: 150px;
       overflow: hidden; }
-      @media (min-width: 600px) {
-        body .container .products-container .product-wrapper .product-img-wrapper {
-          width: 200px; } }
       @media (min-width: 990px) {
         body .container .products-container .product-wrapper .product-img-wrapper {
-          max-height: 200px; } }
+          margin-left: auto;
+          margin-right: auto;
+          max-height: 200px;
+          width: 200px;
+          overflow: hidden; } }
       body .container .products-container .product-wrapper .product-img-wrapper img {
         height: auto;
         width: 150px; }
+        @media (min-width: 600px) {
+          body .container .products-container .product-wrapper .product-img-wrapper img {
+            width: 200px; } }
         body .container .products-container .product-wrapper .product-img-wrapper img:hover {
           cursor: pointer;
           animation: flash 0.2s;
@@ -599,28 +603,28 @@ h1 {
 
 body .thankyou-container {
   height: auto; }
-  body .thankyou-container .row .col-md-7 .product-wrapper {
+  body .thankyou-container .row .col-md-7 .order-wrapper {
     position: relative;
     height: 260px; }
-    body .thankyou-container .row .col-md-7 .product-wrapper .product-img-wrapper {
+    body .thankyou-container .row .col-md-7 .order-wrapper .order-img-wrapper {
       margin-left: auto;
       margin-right: auto;
       max-height: 200px;
       width: 200px;
       overflow: hidden; }
-      body .thankyou-container .row .col-md-7 .product-wrapper .product-img-wrapper img {
+      body .thankyou-container .row .col-md-7 .order-wrapper .order-img-wrapper img {
         height: auto;
         width: 200px; }
-    body .thankyou-container .row .col-md-7 .product-wrapper .product-info {
+    body .thankyou-container .row .col-md-7 .order-wrapper .product-info {
       text-transform: uppercase;
       text-align: center; }
-      body .thankyou-container .row .col-md-7 .product-wrapper .product-info .product-name {
+      body .thankyou-container .row .col-md-7 .order-wrapper .product-info .product-name {
         position: relative; }
-        body .thankyou-container .row .col-md-7 .product-wrapper .product-info .product-name a {
+        body .thankyou-container .row .col-md-7 .order-wrapper .product-info .product-name a {
           color: #e7be50;
           position: absolute;
           right: 25px; }
-          body .thankyou-container .row .col-md-7 .product-wrapper .product-info .product-name a:hover {
+          body .thankyou-container .row .col-md-7 .order-wrapper .product-info .product-name a:hover {
             filter: brightness(0.4); }
 
 @keyframes move-background {
