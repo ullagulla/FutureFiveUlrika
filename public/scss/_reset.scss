@@ -17,26 +17,10 @@
 }
 
 body {
-    .container {
-        #resetform {
-            background-color: #d3d3d3;
-            width: 40%;
-            margin: 5vh auto;
-            border-radius: 5px;
-            text-align: center;
-            padding: 20px 0;
+    .modal {
+        form {
 
             input {
-                display: block;
-                width: 70%;
-                margin: 20px auto;
-                border-radius: 5px;
-                height: 50px;
-                font-size: 20pt;
-                -webkit-appearance: none;
-                border-width: 0px;
-                border-style: solid;
-                padding: 0 10px;
 
                 &::placeholder {
                     font-size: 12px;
@@ -47,9 +31,15 @@ body {
                 }
             }
 
-            button {
-                background-color: black;
+            .btn {
+                background-color: transparent !important;
+                border-radius: 0;
+                border: 1px solid $primColor;
                 color: $primColor;
+                font-size: 11px;
+                @include tablet(){
+                    font-size: 16px;
+                }
 
                 &:hover {
                     background-color: $primColor !important;

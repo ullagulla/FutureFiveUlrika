@@ -23,7 +23,7 @@ $colorThree: #e0d2b5;
 #signup-form {
 
     background-color: #d3d3d3;
-    width: 70%;
+    width: 90%;
     margin: 5vh auto;
     border-radius: 5px;
     text-align: center;
@@ -63,11 +63,10 @@ $colorThree: #e0d2b5;
         input:nth-child(1) {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
-            border-right: solid 1px #231f20;
+            border-right: 0.5px solid rgba(0, 0, 0, 0.384);
         }
 
         input:nth-child(2) {
-            border-left: solid 1px #231f20;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }

@@ -22,10 +22,10 @@ $colorThree: #e0d2b5;
 
 #signin-form {
     background-color: #d3d3d3;
-    width: 70%;
     margin: 5vh auto;
     border-radius: 5px;
     text-align: center;
+    width: 90%;
     padding: 20px 0;
 
     @include large-tablet() {

@@ -6,17 +6,17 @@
 
     <form id="signup-form" action="/signup" method="post">
         <%- include("../includes/messages.ejs") %>
-        <h6>Förnamn</h6><h6>Efternamn</h6>
+        <h6 class="ml-2">Förnamn | Efternamn</h6>
         <div>
             <input type="text" name="firstname" placeholder="Förnamn" required>
             <input type="text" name="lastname" placeholder="Efternamn" required>
         </div>
-        <h4>Email</h4>
+        <h5>Email</h5>
         <input type="email" name="email" placeholder="Email" required>
-        <h4>Lösenord</h4>
+        <h5>Lösenord</h5>
         <input type="password" name="password" placeholder="Lösenord" required>
 
-        <button class="btn" type="submit">Sign Up</button>
+        <button class="btn" type="submit">Registrera</button>
     </form>
 
 </body>

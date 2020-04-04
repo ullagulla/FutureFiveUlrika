@@ -764,7 +764,7 @@ body .thankyou-container {
 
 .glow {
   height: 70vh;
-  width: 30%;
+  width: 70%;
   font-size: 30px;
   color: #fff;
   text-align: left;
@@ -856,10 +856,10 @@ a {
 
 #signin-form {
   background-color: #d3d3d3;
-  width: 70%;
   margin: 5vh auto;
   border-radius: 5px;
   text-align: center;
+  width: 90%;
   padding: 20px 0; }
   @media (min-width: 768px) {
     #signin-form {
@@ -924,7 +924,7 @@ a {
 
 #signup-form {
   background-color: #d3d3d3;
-  width: 70%;
+  width: 90%;
   margin: 5vh auto;
   border-radius: 5px;
   text-align: center;
@@ -956,9 +956,8 @@ a {
     #signup-form div input:nth-child(1) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      border-right: solid 1px #231f20; }
+      border-right: 0.5px solid rgba(0, 0, 0, 0.384); }
     #signup-form div input:nth-child(2) {
-      border-left: solid 1px #231f20;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0; }
   #signup-form .btn {
@@ -976,35 +975,24 @@ a {
     background-color: #e7be50;
     color: #231f20; }
 
-body .container #resetform {
-  background-color: #d3d3d3;
-  width: 40%;
-  margin: 5vh auto;
-  border-radius: 5px;
-  text-align: center;
-  padding: 20px 0; }
-  body .container #resetform input {
-    display: block;
-    width: 70%;
-    margin: 20px auto;
-    border-radius: 5px;
-    height: 50px;
-    font-size: 20pt;
-    -webkit-appearance: none;
-    border-width: 0px;
-    border-style: solid;
-    padding: 0 10px; }
-    body .container #resetform input::placeholder {
-      font-size: 12px; }
-      @media (min-width: 600px) {
-        body .container #resetform input::placeholder {
-          font-size: 14px; } }
-  body .container #resetform button {
-    background-color: black;
-    color: #e7be50; }
-    body .container #resetform button:hover {
-      background-color: #e7be50 !important;
-      color: black; }
+body .modal form input::placeholder {
+  font-size: 12px; }
+  @media (min-width: 600px) {
+    body .modal form input::placeholder {
+      font-size: 14px; } }
+
+body .modal form .btn {
+  background-color: transparent !important;
+  border-radius: 0;
+  border: 1px solid #e7be50;
+  color: #e7be50;
+  font-size: 11px; }
+  @media (min-width: 600px) {
+    body .modal form .btn {
+      font-size: 16px; } }
+  body .modal form .btn:hover {
+    background-color: #e7be50 !important;
+    color: black; }
 
 body .space-div {
   height: 40px; }
